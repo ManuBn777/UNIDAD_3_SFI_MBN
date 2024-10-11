@@ -6,13 +6,19 @@ Un protocolo binario es una serie de bits (1 y 0) que se envían entre dispositi
 
 ### ¿Puedes describir las partes de un mensaje?
 #### Cabecera (Header):
-Identificación del tipo de mensaje o la dirección.
+Identificación del tipo de mensaje o la dirección ademas está contiene el Len(longitud), Adr(dirección).
 #### Datos (Payload):
-Los datos que se transmiten.
+Los datos que se transmiten; en está contiene la data[]
 #### Checksum/CRC (Footer):
-Para la verificación de la integridad, similar al "Footer" que mencionó tu compañero.
+Para la verificación de la integridad, está contiene LSB-CRC16 y MSB-CRC16 los cuales son bytes para los errores
 
 ### ¿Para qué sirve cada parte del mensaje?
+#### Cabecera (Header):
+Sirve para identificar el tipo de mensaje y proporcionar información necesaria para que el usuario/receptor sepa cómo manejar el resto del mensaje.
+#### Datos (Payload):
+Los datos contienen la información que se está transmitiendo. Por ejemplo, si el sensor está midiendo temperatura, esta parte del mensaje incluirá el valor de la temperatura medida.
+#### Checksum/CRC (Footer):
+Esta parte sirve para verificar si los datos se recibieron correctamente. Si hay un error, el usuario/receptor podrá detectar que los datos fueron corrompidos y podrá solicitar que se reenvíe el mensaje.
 
 ## Ejercicio 4: transmitir números en punto flotante
 ````
